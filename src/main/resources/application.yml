@@ -1,0 +1,21 @@
+spring:
+#  配置数据源信息
+  datasource:
+    url: jdbc:mysql://localhost:3306/mybatis_plus?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: liuyang..
+  profiles:
+    active: default
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #输出SQL语句
+#  mapper-locations:        自定义映射文件的路径，如果不配置，则默认为resources/mapper/**/**.xml
+
+#  global-config:
+#    db-config:
+#      table-prefix: #设置实体类所对应表名的统一前缀
+#      id-type: auto #配置全局的主键生成策略为全局递增
+
+
+#MybaitsPlus中可以自动将数据库中下划线转换为代码中的驼峰,例如数据库中某列为user_name,但是实体类中为userName，mybatisplus会自动进行转换
