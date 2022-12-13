@@ -1,5 +1,6 @@
 package online.liuyang1024.mybatisplus;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import online.liuyang1024.mybatisplus.POJO.User;
 import online.liuyang1024.mybatisplus.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -127,4 +128,7 @@ public class MybatisPlusTest {
         Map<String, Object> res = userMapper.selectMapById(1L);
         System.out.println(res);
     }
+
+
+
 }

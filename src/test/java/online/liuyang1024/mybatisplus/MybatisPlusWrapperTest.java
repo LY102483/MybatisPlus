@@ -3,10 +3,9 @@ package online.liuyang1024.mybatisplus;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import online.liuyang1024.mybatisplus.POJO.User;
 import online.liuyang1024.mybatisplus.mapper.UserMapper;
-import online.liuyang1024.mybatisplus.service.UserService;
-import org.apache.ibatis.jdbc.SQL;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -170,7 +169,41 @@ public class MybatisPlusWrapperTest {
 
     }
 
+    @Test
+    //测试分页插件
+    public void testPage(){
+        //设置分页参数
+        /**
+         * current:当前页数
+         * size：每页数量
+         */
+        Page<User> page = new Page<>(3, 5);
+        userMapper.selectPage(page, null);
+        //获取分页数据
+        List<User> list = page.getRecords();
+        list.forEach(System.out::println);
+        System.out.println("当前页："+page.getCurrent());
+        System.out.println("每页显示的条数："+page.getSize());
+        System.out.println("总记录数："+page.getTotal());
+        System.out.println("总页数："+page.getPages());
+        System.out.println("是否有上一页："+page.hasPrevious());
+        System.out.println("是否有下一页："+page.hasNext());
+    }
 
-
-
+    @Test
+    //xml自定义分页
+    public void testSelectPageVo(){
+        //设置分页参数
+        Page<User> page = new Page<>(10, 5);
+        userMapper.selectPageVo(page, 20);
+        //获取分页数据
+        List<User> list = page.getRecords();
+        list.forEach(System.out::println);
+        System.out.println("当前页："+page.getCurrent());
+        System.out.println("每页显示的条数："+page.getSize());
+        System.out.println("总记录数："+page.getTotal());
+        System.out.println("总页数："+page.getPages());
+        System.out.println("是否有上一页："+page.hasPrevious());
+        System.out.println("是否有下一页："+page.hasNext());
+    }
 }

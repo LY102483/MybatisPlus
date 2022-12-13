@@ -6,4 +6,14 @@
     <select id="selectMapById" resultType="map">
         select id,name,age,email from user where id=#{id}
     </select>
+
+
+
+    <!--SQL片段，记录基础字段-->
+    <sql id="BaseColumns">id,name,age,email,is_deleted</sql>
+    <!--IPage<User> selectPageVo(Page<User> page, Integer age);-->
+    <select id="selectPageVo" resultType="online.liuyang1024.mybatisplus.POJO.User">
+        SELECT <include refid="BaseColumns"></include> FROM user WHERE age > #{age}
+    </select>
+
 </mapper>

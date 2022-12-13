@@ -2,6 +2,7 @@ package online.liuyang1024.mybatisplus.POJO;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
+import online.liuyang1024.mybatisplus.enums.SexEnum;
 
 /**
  * Created by LiuYang on 2022/09/17 15:59
@@ -43,4 +44,6 @@ public class User {
     @TableLogic       //该注解表示此属性为逻辑删除，0表示未删除，1表示删除，进行逻辑删除后，查询也会失效。
     // SELECT id,name,age,email,is_deleted FROM user WHERE id IN ( ? , ? , ? ) AND is_deleted=0
     private Integer isDeleted;
+
+    private SexEnum sex;
 }
